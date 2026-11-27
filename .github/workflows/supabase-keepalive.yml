@@ -33,7 +33,8 @@ jobs:
           code=$(curl -s -o /dev/null -w "%{http_code}" \
             "$URL/rest/v1/app_settings?select=id" -H "apikey: $KEY")
           echo "REST: HTTP $code"
-          code=$(curl -s -o /dev/null -w "%{http_code}" "$URL/auth/v1/health")
+          code=$(curl -s -o /dev/null -w "%{http_code}" "$URL/auth/v1/health" \
+            -H "apikey: $KEY")
           echo "Auth: HTTP $code"
 
       # GitHub отключает scheduled-workflow после 60 дней без
